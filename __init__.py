@@ -23,11 +23,21 @@ class Command:
         ini_write(fn_config, 'op', 'option_int', str(option_int))
         ini_write(fn_config, 'op', 'option_bool', bool_to_str(option_bool))
         file_open(fn_config)
-        
+
+    def call_browser(self,browser,site):
+        if browser[0]=='"':
+          temp==browser.split('"')
+          ss=[temp[1][:-1]]+[temp[2].split()]+[site]
+        else:
+          ss=browser.split()+[site]
+        os.spawnv(os.P_NOWAIT+os.P_OVERLAY,ss[0],ss)
+
     def url_chrome(self):
-        pass
+        self.call_browser('A:\chrome64_49.0.2623.75\chrome.exe','www.foo.com')
+
     def url_chrome_pvt(self):
-        pass
+        self.call_browser('A:\chrome64_49.0.2623.75\chrome.exe --incognito','www.foo.com')
+
     def url_firefox(self):
         pass
     def url_firefox_pvt(self):
