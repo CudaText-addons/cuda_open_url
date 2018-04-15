@@ -38,7 +38,7 @@ class Command:
         opt_opera       = ini_read(fn_config, 'op', 'opera', opt_opera)
         opt_opera_pvt   = ini_read(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
 
-        opt_handle_click = ini_read(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click))
+        opt_handle_click = str_to_bool(ini_read(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click)))
 
 
     def config(self):
