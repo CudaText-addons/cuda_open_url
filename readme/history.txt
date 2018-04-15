@@ -1,5 +1,5 @@
 
-2018.04.16
+2018.04.15.4
 + add: handling of clicks on URL: plugin shows menu on click
 + add: option "handle_click" (0/1)
 + add: commands for MSIE browser
