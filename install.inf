@@ -1,9 +1,9 @@
 [info]
 title=Open URL
-desc=Gives commands to open URL (under text caret) in browser
+desc=Gives commands to open URL (under text caret) in many browsers
 type=cudatext-plugin
 subdir=cuda_open_url
-homepage=
+homepage=https://github.com/CudaText-addons/cuda_open_url
 
 [item1]
 section=events
