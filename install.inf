@@ -35,3 +35,8 @@ section=commands
 caption=Open URL\Open URL in Opera, private mode
 method=url_opera_pvt
 
+[item50]
+section=commands
+caption=Open URL\Config
+method=config
+menu=o
