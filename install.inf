@@ -44,6 +44,16 @@ section=commands
 caption=Open URL\Open URL in Opera, private mode
 method=url_opera_pvt
 
+[item20]
+section=commands
+caption=Open URL\Open URL in IE
+method=url_ie
+
+[item21]
+section=commands
+caption=Open URL\Open URL in IE, private mode
+method=url_ie_pvt
+
 [item50]
 section=commands
 caption=Open URL\Config

@@ -12,6 +12,8 @@ opt_firefox = 'firefox'
 opt_firefox_pvt = 'firefox -private-window'
 opt_opera = 'opera'
 opt_opera_pvt = 'opera -newprivatetab'
+opt_ie = 'iexplore.exe'
+opt_ie_pvt = 'iexplore.exe -private'
 opt_handle_click = True
 
 def bool_to_str(v): return '1' if v else '0'
@@ -68,6 +70,8 @@ class Command:
             'Open in Firefox, private mode',
             'Open in Opera',
             'Open in Opera, private mode',
+            'Open in IE',
+            'Open in IE, private mode',
             ]
         res = dlg_menu(MENU_LIST, items, caption='Open URL')
         if res is None: return
@@ -79,6 +83,8 @@ class Command:
         elif res==4: self.run(opt_firefox_pvt, url)
         elif res==5: self.run(opt_opera, url)
         elif res==6: self.run(opt_opera_pvt, url)
+        elif res==7: self.run(opt_ie, url)
+        elif res==8: self.run(opt_ie_pvt, url)
 
 
     def get_url(self):
@@ -130,4 +136,10 @@ class Command:
 
     def url_opera_pvt(self):
         self.run(opt_opera_pvt, self.get_url())
+
+    def url_ie(self):
+        self.run(opt_ie, self.get_url())
+
+    def url_ie_pvt(self):
+        self.run(opt_ie_pvt, self.get_url())
 
