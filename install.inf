@@ -5,32 +5,41 @@ type=cudatext-plugin
 subdir=cuda_open_url
 homepage=
 
+[item1]
+section=events
+events=on_click
+
 [item2]
+section=commands
+caption=Open URL\Open URL in default browser
+method=url_default
+
+[item10]
 section=commands
 caption=Open URL\Open URL in Chrome
 method=url_chrome
 
-[item3]
+[item11]
 section=commands
 caption=Open URL\Open URL in Chrome, private mode
 method=url_chrome_pvt
 
-[item4]
+[item12]
 section=commands
 caption=Open URL\Open URL in Firefox
 method=url_firefox
 
-[item5]
+[item13]
 section=commands
 caption=Open URL\Open URL in Firefox, private mode
 method=url_firefox_pvt
 
-[item6]
+[item14]
 section=commands
 caption=Open URL\Open URL in Opera
 method=url_opera
 
-[item7]
+[item15]
 section=commands
 caption=Open URL\Open URL in Opera, private mode
 method=url_opera_pvt

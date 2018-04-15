@@ -1,5 +1,6 @@
 import os
 import shlex
+import webbrowser
 from subprocess import Popen
 from cudatext import *
 
@@ -11,6 +12,7 @@ opt_firefox = 'firefox'
 opt_firefox_pvt = 'firefox -private-window'
 opt_opera = 'opera'
 opt_opera_pvt = 'opera -newprivatetab'
+opt_handle_click = True
 
 def bool_to_str(v): return '1' if v else '0'
 def str_to_bool(s): return s=='1'
@@ -25,6 +27,7 @@ class Command:
         global opt_firefox_pvt
         global opt_opera
         global opt_opera_pvt
+        global opt_handle_click
 
         opt_chrome      = ini_read(fn_config, 'op', 'chrome', opt_chrome)
         opt_chrome_pvt  = ini_read(fn_config, 'op', 'chrome_pvt', opt_chrome_pvt)
@@ -32,6 +35,9 @@ class Command:
         opt_firefox_pvt = ini_read(fn_config, 'op', 'firefox_pvt', opt_firefox_pvt)
         opt_opera       = ini_read(fn_config, 'op', 'opera', opt_opera)
         opt_opera_pvt   = ini_read(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
+
+        opt_handle_click = ini_read(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click))
+
 
     def config(self):
 
@@ -42,12 +48,47 @@ class Command:
         ini_write(fn_config, 'op', 'opera', opt_opera)
         ini_write(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
 
+        ini_write(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click))
+
         file_open(fn_config)
 
-    def call_browser(self, browser):
+
+    def on_click(self, ed_self, state):
+
+        if not opt_handle_click: return
+
+        url = self.get_url()
+        if not url: return
+
+        items = [
+            'Open in default browser',
+            'Open in Chrome',
+            'Open in Chrome, private mode',
+            'Open in Firefox',
+            'Open in Firefox, private mode',
+            'Open in Opera',
+            'Open in Opera, private mode',
+            ]
+        res = dlg_menu(MENU_LIST, items, caption='Open URL')
+        if res is None: return
+
+        if res==0: webbrowser.open_new_tab(url)
+        elif res==1: self.run(opt_chrome, url)
+        elif res==2: self.run(opt_chrome_pvt, url)
+        elif res==3: self.run(opt_firefox, url)
+        elif res==4: self.run(opt_firefox_pvt, url)
+        elif res==5: self.run(opt_opera, url)
+        elif res==6: self.run(opt_opera_pvt, url)
+
+
+    def get_url(self):
 
         x, y, x1, y1 = ed.get_carets()[0]
-        url = ed.get_prop(PROP_LINK_AT_POS, (x, y))
+        return ed.get_prop(PROP_LINK_AT_POS, (x, y))
+
+
+    def run(self, browser, url):
+
         if not url:
             msg_status('Cannot find URL under caret')
             return
@@ -69,9 +110,24 @@ class Command:
             msg_status('Error running browser: '+browser)
 
 
-    def url_chrome(self):         self.call_browser(opt_chrome)
-    def url_chrome_pvt(self):     self.call_browser(opt_chrome_pvt)
-    def url_firefox(self):        self.call_browser(opt_firefox)
-    def url_firefox_pvt(self):    self.call_browser(opt_firefox_pvt)
-    def url_opera(self):          self.call_browser(opt_opera)
-    def url_opera_pvt(self):      self.call_browser(opt_opera_pvt)
+    def url_default(self):
+        webbrowser.open_new_tab(self.get_url())
+
+    def url_chrome(self):
+        self.run(opt_chrome, self.get_url())
+
+    def url_chrome_pvt(self):
+        self.run(opt_chrome_pvt, self.get_url())
+
+    def url_firefox(self):
+        self.run(opt_firefox, self.get_url())
+
+    def url_firefox_pvt(self):
+        self.run(opt_firefox_pvt, self.get_url())
+
+    def url_opera(self):
+        self.run(opt_opera, self.get_url())
+
+    def url_opera_pvt(self):
+        self.run(opt_opera_pvt, self.get_url())
+
