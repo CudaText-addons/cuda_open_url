@@ -14,6 +14,8 @@ opt_opera = 'opera'
 opt_opera_pvt = 'opera -newprivatetab'
 opt_ie = 'iexplore.exe'
 opt_ie_pvt = 'iexplore.exe -private'
+opt_tool1 = ''
+opt_tool2 = ''
 opt_handle_click = True
 
 def bool_to_str(v): return '1' if v else '0'
@@ -30,6 +32,8 @@ class Command:
         global opt_opera
         global opt_opera_pvt
         global opt_handle_click
+        global opt_tool1
+        global opt_tool2
 
         opt_chrome      = ini_read(fn_config, 'op', 'chrome', opt_chrome)
         opt_chrome_pvt  = ini_read(fn_config, 'op', 'chrome_pvt', opt_chrome_pvt)
@@ -37,6 +41,9 @@ class Command:
         opt_firefox_pvt = ini_read(fn_config, 'op', 'firefox_pvt', opt_firefox_pvt)
         opt_opera       = ini_read(fn_config, 'op', 'opera', opt_opera)
         opt_opera_pvt   = ini_read(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
+
+        opt_tool1   = ini_read(fn_config, 'op', 'tool_1', '')
+        opt_tool2   = ini_read(fn_config, 'op', 'tool_2', '')
 
         opt_handle_click = str_to_bool(ini_read(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click)))
 
@@ -49,6 +56,9 @@ class Command:
         ini_write(fn_config, 'op', 'firefox_pvt', opt_firefox_pvt)
         ini_write(fn_config, 'op', 'opera', opt_opera)
         ini_write(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
+
+        ini_write(fn_config, 'op', 'tool_1', opt_tool1)
+        ini_write(fn_config, 'op', 'tool_2', opt_tool2)
 
         ini_write(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click))
 
@@ -111,9 +121,9 @@ class Command:
 
         try:
             Popen(v)
-            msg_status('Running browser: '+browser)
+            msg_status('Running: "'+browser+'"')
         except:
-            msg_status('Error running browser: '+browser)
+            msg_status('Error running: "'+browser+'"')
 
 
     def url_default(self):
@@ -143,3 +153,8 @@ class Command:
     def url_ie_pvt(self):
         self.run(opt_ie_pvt, self.get_url())
 
+    def url_tool1(self):
+        self.run(opt_tool1, self.get_url())
+
+    def url_tool2(self):
+        self.run(opt_tool2, self.get_url())

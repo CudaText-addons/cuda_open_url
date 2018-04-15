@@ -3,6 +3,7 @@
 + add: handling of clicks on URL: plugin shows menu on click
 + add: option "handle_click" (0/1)
 + add: commands for MSIE browser
++ add: commands "open in tool-1", "open in tool-2" for custom tools
 
 2018.04.15
 initial

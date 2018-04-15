@@ -54,7 +54,17 @@ section=commands
 caption=Open URL\Open URL in IE, private mode
 method=url_ie_pvt
 
-[item50]
+[item40]
+section=commands
+caption=Open URL\Open URL in tool-1
+method=url_tool1
+
+[item41]
+section=commands
+caption=Open URL\Open URL in tool-2
+method=url_tool2
+
+[item100]
 section=commands
 caption=Open URL\Config
 method=config
