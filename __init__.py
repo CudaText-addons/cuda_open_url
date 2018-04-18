@@ -17,6 +17,7 @@ opt_ie_pvt = 'iexplore.exe -private'
 opt_tool1 = ''
 opt_tool2 = ''
 opt_handle_click = True
+opt_action_on_click = -1
 
 def bool_to_str(v): return '1' if v else '0'
 def str_to_bool(s): return s=='1'
@@ -32,6 +33,7 @@ class Command:
         global opt_opera
         global opt_opera_pvt
         global opt_handle_click
+        global opt_action_on_click
         global opt_tool1
         global opt_tool2
 
@@ -46,6 +48,7 @@ class Command:
         opt_tool2   = ini_read(fn_config, 'op', 'tool_2', '')
 
         opt_handle_click = str_to_bool(ini_read(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click)))
+        opt_action_on_click = int(ini_read(fn_config, 'op', 'action_on_click', '-1'))
 
 
     def config(self):
@@ -61,6 +64,7 @@ class Command:
         ini_write(fn_config, 'op', 'tool_2', opt_tool2)
 
         ini_write(fn_config, 'op', 'handle_click', bool_to_str(opt_handle_click))
+        ini_write(fn_config, 'op', 'action_on_click', str(opt_action_on_click))
 
         file_open(fn_config)
 
@@ -83,7 +87,11 @@ class Command:
             'Open in IE',
             'Open in IE, private mode',
             ]
-        res = dlg_menu(MENU_LIST, items, caption='Open URL')
+
+        if opt_action_on_click >= 0:
+            res = opt_action_on_click
+        else:
+            res = dlg_menu(MENU_LIST, items, caption='Open URL')
         if res is None: return
 
         if res==0: webbrowser.open_new_tab(url)
