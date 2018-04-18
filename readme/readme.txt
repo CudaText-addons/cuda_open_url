@@ -14,7 +14,11 @@ Plugin also handles click event in editor, and if URL is clicked, it shows menu 
 
 You can configure paths to browsers, using config file - to edit file, call menu "Options / Settings-plugins / Open URL".
 
-Authors:
-  Alexey (CudaText)
-  Artem3213212 (on Github)
+Option "handle_click": boolean (0 or 1): enable action of clicking URL in text.
+Option "action_on_click": number:
+- If -1: click on URL shows menu of browsers to use
+- If >=0: it's 0-based index of menu item in browsers menu, this choice is used instead of showing menu.
+
+
+Author: Alexey (CudaText)
 License: MIT
