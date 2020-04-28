@@ -1,4 +1,7 @@
 
+2020.04.28
+* change: handle double-click instead of simple click (wish at forum)
+
 2018.04.18
 + add: option "action_on_click" - see readme
 
