@@ -7,7 +7,7 @@ homepage=https://github.com/CudaText-addons/cuda_open_url
 
 [item1]
 section=events
-events=on_click
+events=on_click_dbl
 
 [item2]
 section=commands

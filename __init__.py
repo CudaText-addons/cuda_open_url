@@ -69,7 +69,7 @@ class Command:
         file_open(fn_config)
 
 
-    def on_click(self, ed_self, state):
+    def on_click_dbl(self, ed_self, state):
 
         if not opt_handle_click: return
 
@@ -92,7 +92,8 @@ class Command:
             res = opt_action_on_click
         else:
             res = dlg_menu(MENU_LIST, items, caption='Open URL')
-        if res is None: return
+        if res is None:
+            return False
 
         if res==0: webbrowser.open_new_tab(url)
         elif res==1: self.run(opt_chrome, url)
@@ -103,6 +104,8 @@ class Command:
         elif res==6: self.run(opt_opera_pvt, url)
         elif res==7: self.run(opt_ie, url)
         elif res==8: self.run(opt_ie_pvt, url)
+
+        return False #disable std click handling
 
 
     def get_url(self):
