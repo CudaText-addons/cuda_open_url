@@ -10,7 +10,7 @@ Gives menu "Plugins / Open URL" with several commands to open URL (under first c
 - IE
 - IE, private mode
 
-Plugin also handles click event in editor, and if URL is clicked, it shows menu to open this URL.
+Plugin also handles double-click event in editor, and if URL is double-clicked, it shows menu to open this URL.
 
 You can configure paths to browsers, using config file - to edit file, call menu "Options / Settings-plugins / Open URL".
 
