@@ -69,12 +69,9 @@ class Command:
         file_open(fn_config)
 
 
-    def on_click_dbl(self, ed_self, state):
+    def on_click_link(self, ed_self, state, url):
 
         if not opt_handle_click: return
-
-        url = self.get_url()
-        if not url: return
 
         items = [
             'Open in default browser',

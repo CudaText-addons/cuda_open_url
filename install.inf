@@ -4,10 +4,11 @@ desc=Gives commands to open URL (under text caret) in many browsers
 type=cudatext-plugin
 subdir=cuda_open_url
 homepage=https://github.com/CudaText-addons/cuda_open_url
+api=1.0.327
 
 [item1]
 section=events
-events=on_click_dbl
+events=on_click_link
 
 [item2]
 section=commands

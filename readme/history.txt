@@ -1,4 +1,7 @@
 
+2020.05.18
+* change: require CudaText 1.100.0 and use its new API
+
 2020.04.28
 * change: handle double-click instead of simple click (wish at forum)
 
