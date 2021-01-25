@@ -20,5 +20,5 @@ Option "action_on_click": number:
 - If >=0: it's 0-based index of menu item in browsers menu, this choice is used instead of showing menu.
 
 
-Author: Alexey (CudaText)
+Author: Alexey Torgashin (CudaText)
 License: MIT
