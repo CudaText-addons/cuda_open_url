@@ -88,7 +88,7 @@ class Command:
         if opt_action_on_click >= 0:
             res = opt_action_on_click
         else:
-            res = dlg_menu(MENU_LIST, items, caption='Open URL')
+            res = dlg_menu(DMENU_LIST, items, caption='Open URL')
         if res is None:
             return False
 
