@@ -12,8 +12,8 @@ opt_firefox = 'firefox'
 opt_firefox_pvt = 'firefox -private-window'
 opt_opera = 'opera'
 opt_opera_pvt = 'opera -newprivatetab'
-opt_ie = 'iexplore.exe'
-opt_ie_pvt = 'iexplore.exe -private'
+opt_edge = '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"'
+opt_edge_pvt = '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" -inprivate'
 opt_tool1 = ''
 opt_tool2 = ''
 opt_handle_click = True
@@ -32,6 +32,8 @@ class Command:
         global opt_firefox_pvt
         global opt_opera
         global opt_opera_pvt
+        global opt_edge
+        global opt_edge_pvt
         global opt_handle_click
         global opt_action_on_click
         global opt_tool1
@@ -43,6 +45,8 @@ class Command:
         opt_firefox_pvt = ini_read(fn_config, 'op', 'firefox_pvt', opt_firefox_pvt)
         opt_opera       = ini_read(fn_config, 'op', 'opera', opt_opera)
         opt_opera_pvt   = ini_read(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
+        opt_edge        = ini_read(fn_config, 'op', 'edge', opt_edge)
+        opt_edge_pvt    = ini_read(fn_config, 'op', 'edge_pvt', opt_edge_pvt)
 
         opt_tool1   = ini_read(fn_config, 'op', 'tool_1', '')
         opt_tool2   = ini_read(fn_config, 'op', 'tool_2', '')
@@ -59,6 +63,8 @@ class Command:
         ini_write(fn_config, 'op', 'firefox_pvt', opt_firefox_pvt)
         ini_write(fn_config, 'op', 'opera', opt_opera)
         ini_write(fn_config, 'op', 'opera_pvt', opt_opera_pvt)
+        ini_write(fn_config, 'op', 'edge', opt_edge)
+        ini_write(fn_config, 'op', 'edge_pvt', opt_edge_pvt)
 
         ini_write(fn_config, 'op', 'tool_1', opt_tool1)
         ini_write(fn_config, 'op', 'tool_2', opt_tool2)
@@ -81,8 +87,8 @@ class Command:
             'Open in Firefox, private mode',
             'Open in Opera',
             'Open in Opera, private mode',
-            'Open in IE',
-            'Open in IE, private mode',
+            'Open in Edge',
+            'Open in Edge, private mode',
             ]
 
         if opt_action_on_click >= 0:
@@ -99,8 +105,8 @@ class Command:
         elif res==4: self.run(opt_firefox_pvt, url)
         elif res==5: self.run(opt_opera, url)
         elif res==6: self.run(opt_opera_pvt, url)
-        elif res==7: self.run(opt_ie, url)
-        elif res==8: self.run(opt_ie_pvt, url)
+        elif res==7: self.run(opt_edge, url)
+        elif res==8: self.run(opt_edge_pvt, url)
 
         return False #disable std click handling
 
@@ -155,11 +161,11 @@ class Command:
     def url_opera_pvt(self):
         self.run(opt_opera_pvt, self.get_url())
 
-    def url_ie(self):
-        self.run(opt_ie, self.get_url())
+    def url_edge(self):
+        self.run(opt_edge, self.get_url())
 
-    def url_ie_pvt(self):
-        self.run(opt_ie_pvt, self.get_url())
+    def url_edge_pvt(self):
+        self.run(opt_edge_pvt, self.get_url())
 
     def url_tool1(self):
         self.run(opt_tool1, self.get_url())

@@ -47,13 +47,13 @@ method=url_opera_pvt
 
 [item20]
 section=commands
-caption=Open URL\Open URL in IE
-method=url_ie
+caption=Open URL\Open URL in Edge
+method=url_edge
 
 [item21]
 section=commands
-caption=Open URL\Open URL in IE, private mode
-method=url_ie_pvt
+caption=Open URL\Open URL in Edge, private mode
+method=url_edge_pvt
 
 [item40]
 section=commands
